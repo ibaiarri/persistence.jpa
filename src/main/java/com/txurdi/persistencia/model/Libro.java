@@ -4,37 +4,49 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
-@Entity                       // @Entity define que la entidad es persistible contra la base de datos
+@Entity // @Entity define que la entidad es persistible contra la base de datos
 @Table(name = "libros")
-
 
 @NamedQuery(query = "SELECT l FROM Libro l WHERE l.id = :id", name = "find libro by id")
 
-public class Libro  implements Serializable {
-	
-	
+public class Libro implements Serializable {
+
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue
 	private int id;
-		
+	@Column(unique = true)
 	private String nombre;
-	
+
+	@ManyToOne
+	@JoinColumn(name = "id_editorial", nullable = false )
+	private Editorial editorial;
+
 	public Libro() {
 		super();
 		this.id = 0;
 		this.nombre = "";
+		this.editorial = new Editorial();
 	}
 
 	public Libro(String nombre) {
 		this();
 		this.nombre = nombre;
+	}
+
+	public Libro(String string, Editorial editorial) {
+		this();
+		this.nombre = string;
+		this.editorial = editorial;
 	}
 
 	public int getId() {
@@ -53,10 +65,17 @@ public class Libro  implements Serializable {
 		this.nombre = nombre;
 	}
 
+	public Editorial getEditorial() {
+		return editorial;
+	}
+
+	public void setEditorial(Editorial editorial) {
+		this.editorial = editorial;
+	}
+
 	@Override
 	public String toString() {
-		return "Libro [id=" + id + ", nombre=" + nombre + "]";
+		return "Libro [id=" + id + ", nombre=" + nombre + ", editorial=" + editorial + "]";
 	}
-	
 
 }
