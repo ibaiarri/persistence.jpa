@@ -37,7 +37,8 @@ public class Usuario implements Serializable {
 	@NotEmpty
 	@Size(min = 2, max = 20, message = "El apellido del personaje debe estar entre 2 y 20 caracteres")
 	private String apellido;
-
+	
+	@NotNull
 	private int tef;
 
 
