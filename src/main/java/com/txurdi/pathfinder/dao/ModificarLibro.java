@@ -1,17 +1,17 @@
-package com.txurdi.persistencia.ejemplos;
+package com.txurdi.pathfinder.dao;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import com.txurdi.persistencia.model.Libro;
+import com.txurdi.pathfinder.model.Personaje;
 
 /**
- * Ejemplo para eliminar un Libro
+ * Ejemplo para modificar un Libro
  * @author Ander Uraga Real
  *
  */
-public class EliminarLibro {
+public class ModificarLibro {
 
 	public static void main(String[] args) {
 
@@ -22,14 +22,11 @@ public class EliminarLibro {
 		em.getTransaction().begin();		
 		
 		// obtener Libro por Id
-		Libro l = em.find(Libro.class,1);
+		Personaje l = em.find(Personaje.class,1);
 		
-		//eliminar
-		if ( l != null ) {
-			em.remove(l);
-		}else {
-			System.out.println("No se puede elimiar un libro que no existe");
-		}
+		// Update
+		l.setNombre( "** " + l.getNombre() + " **");
+		em.merge(l);
 		
 		
 		em.getTransaction().commit();		

@@ -1,10 +1,10 @@
-package com.txurdi.persistencia.ejemplos;
+package com.txurdi.pathfinder.dao;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import com.txurdi.persistencia.model.Libro;
+import com.txurdi.pathfinder.model.Personaje;
 
 
 
@@ -25,9 +25,9 @@ public class CrearLibros {
 		em.getTransaction().begin();
 		
 		
-		Libro libro = new Libro("Dime quien soy");
-		Libro libro2 = new Libro("El libro de la selva");
-		Libro libro3 = new Libro("Papillom");
+		Personaje libro = new Personaje("Dime quien soy");
+		Personaje libro2 = new Personaje("El libro de la selva");
+		Personaje libro3 = new Personaje("Papillom");
 		
 		em.persist(libro);
 		em.persist(libro2);

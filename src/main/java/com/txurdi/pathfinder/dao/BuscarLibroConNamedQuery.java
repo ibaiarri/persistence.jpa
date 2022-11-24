@@ -1,4 +1,4 @@
-package com.txurdi.persistencia.ejemplos;
+package com.txurdi.pathfinder.dao;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +8,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
-import com.txurdi.persistencia.model.Libro;
+import com.txurdi.pathfinder.model.Personaje;
 
 /**
  * Una anotación @NamedQuery se define como una consulta con una cadena de
@@ -32,9 +32,9 @@ public class BuscarLibroConNamedQuery {
 		Query query = em.createNamedQuery("find libro by id");
 		query.setParameter("id", 2);
 
-		List<Libro> libros = query.getResultList();
+		List<Personaje> libros = query.getResultList();
 
-		for (Libro libro : libros) {
+		for (Personaje libro : libros) {
 			System.out.print(libro);
 		}
 

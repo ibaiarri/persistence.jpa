@@ -1,4 +1,4 @@
-package com.txurdi.persistencia.ejemplos;
+package com.txurdi.pathfinder.dao;
 
 import java.util.ArrayList;
 
@@ -6,7 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import com.txurdi.persistencia.model.Libro;
+import com.txurdi.pathfinder.model.Personaje;
 
 
 
@@ -43,7 +43,7 @@ public class ListarLibrosJPQL {
 		 * */
 		
 		
-		ArrayList<Libro> libros = (ArrayList<Libro>) em.createQuery(JPQL).getResultList();		
+		ArrayList<Personaje> libros = (ArrayList<Personaje>) em.createQuery(JPQL).getResultList();		
 		System.out.println(libros);
 		
 		em.close();
