@@ -1,6 +1,7 @@
 package com.txurdi.pathfinder.model;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -45,6 +46,16 @@ public class Personaje implements Serializable {
 	@JoinColumn(name = "id_usuario", nullable = false)
 	@Valid // SIRVE PARA VALIDAR EN CASCADA CUENTA SE VALIDA ESTE OBJETO
 	private Usuario user;
+	
+	//Modificar Las fechas
+	private Date fecha_alt;
+	private Date fecha_baja;
+	private Date fecha_modificacion;
+	
+	
+	private int disponible ;
+
+	
 
 	public Personaje() {
 		super();
@@ -117,11 +128,46 @@ public class Personaje implements Serializable {
 	public void setUser(Usuario user) {
 		this.user = user;
 	}
+	
+	
+	public Date getFecha_alt() {
+		return fecha_alt;
+	}
+
+	public void setFecha_alt(Date fecha_alt) {
+		this.fecha_alt = fecha_alt;
+	}
+
+	public Date getFecha_baja() {
+		return fecha_baja;
+	}
+
+	public void setFecha_baja(Date fecha_baja) {
+		this.fecha_baja = fecha_baja;
+	}
+
+	public Date getFecha_modificacion() {
+		return fecha_modificacion;
+	}
+
+	public void setFecha_modificacion(Date fecha_modificacion) {
+		this.fecha_modificacion = fecha_modificacion;
+	}
+	
+	public int getDisponible() {
+		return disponible;
+	}
+
+	public void setDisponible(int disponible) {
+		this.disponible = disponible;
+	}
 
 	@Override
 	public String toString() {
 		return "Personaje [id_personaje=" + id_personaje + ", nombre=" + nombre + ", raza=" + raza + ", nivel=" + nivel
-				+ ", clase=" + clase + ", user=" + user + "]";
+				+ ", clase=" + clase + ", user=" + user + ", fecha_alt=" + fecha_alt + ", fecha_baja=" + fecha_baja
+				+ ", fecha_modificacion=" + fecha_modificacion + "]";
 	}
+
 
 }

@@ -1,6 +1,7 @@
 package com.txurdi.pathfinder.model;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -13,11 +14,15 @@ import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.NotFound;
+import org.hibernate.validator.constraints.Length;
 
 @Entity
 public class Usuario implements Serializable {
@@ -37,14 +42,18 @@ public class Usuario implements Serializable {
 	@NotEmpty
 	@Size(min = 2, max = 20, message = "El apellido del personaje debe estar entre 2 y 20 caracteres")
 	private String apellido;
-	
-	@NotNull
-	private int tef;
 
+	@NotNull
+	//@Pattern(regexp = "(?:6[0-9]|7[1-9])[0-9]{7}$", message = "Incorrect format")
+	private int tef;
 
 	private int tipoUser;
 	@OneToMany
 	private Set<Personaje> personajes;
+
+	
+
+	
 
 	public Usuario() {
 		super();
@@ -130,8 +139,10 @@ public class Usuario implements Serializable {
 				+ ", tipoUser=" + tipoUser + ", personajes=" + personajes + "]";
 	}
 
-	
 
-	
+
+
+
+
 
 }
